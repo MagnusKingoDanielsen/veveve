@@ -8,3 +8,5 @@ export class LinkingModel {
     this.idtojump = idtojump;
   }
 }
+
+

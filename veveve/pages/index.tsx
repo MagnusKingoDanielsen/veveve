@@ -1,14 +1,23 @@
 import Head from "next/head";
 import { Inter } from "@next/font/google";
-import Footer from "../components/footer/Footer";
 
+//Components
+import Footer from "../components/footer/Footer";
 import Hero from "../components/HeroSection/Hero";
 import Nav from "../components/Nav/Nav";
+
+
 import { LinkingModel } from "../components/model/LinkModel";
+import { CardModel } from "../components/model/CardModel";
+import CardPage from "../components/Cards/Cards";
 
 const Links: LinkingModel[] = [
   new LinkingModel("1", "cases", "#cases"),
   new LinkingModel("2", "priser", "#blabla"),
+];
+
+const InfoCard: CardModel[] = [
+  new CardModel(5, "test", "lorem ibsum", "her er ekstra"),
 ];
 
 export default function Home() {
@@ -22,7 +31,10 @@ export default function Home() {
       </Head>
       <Nav links={Links} />
       <Hero title="jeg er ikke google premium partner, fordi jeg ikke arbejder for google jeg arbejder for jer" />
+      <CardPage cardData={data} />
+
       <Footer />
     </>
   );
 }
+
