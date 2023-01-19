@@ -7,7 +7,6 @@ import Hero from "../components/HeroSection/Hero";
 import Nav from "../components/Nav/Nav";
 
 import { LinkingModel } from "../components/model/LinkModel";
-import MyComponent from "../components/Cards/Test";
 
 const Links: LinkingModel[] = [
   new LinkingModel("1", "cases", "#cases"),
@@ -19,10 +18,12 @@ interface Props {
 }
 
 export const getStaticProps: GetStaticProps<Props> = async () => {
-  const data = await fetch("http://localhost:3000/api/hello")
+  const data = await fetch(
+    "https://lionfish-app-ggvnm.ondigitalocean.app/api/hello"
+  )
     .then((res) => res.json())
     .catch((err) => console.error(err));
-
+  console.log(data);
   return {
     props: {
       data,
@@ -41,9 +42,7 @@ export default function Home({ data }: Props) {
       </Head>
       <Nav links={Links} />
       <Hero title="" />
-
-      <MyComponent data={data} />
-
+      <h2> {data} </h2>
       <Footer />
     </>
   );
