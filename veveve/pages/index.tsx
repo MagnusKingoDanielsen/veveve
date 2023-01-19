@@ -1,26 +1,36 @@
 import Head from "next/head";
 import { Inter } from "@next/font/google";
-
+import { GetStaticProps } from "next";
 //Components
 import Footer from "../components/footer/Footer";
 import Hero from "../components/HeroSection/Hero";
 import Nav from "../components/Nav/Nav";
 
-
 import { LinkingModel } from "../components/model/LinkModel";
-import { CardModel } from "../components/model/CardModel";
-import CardPage from "../components/Cards/Cards";
+import MyComponent from "../components/Cards/Test";
 
 const Links: LinkingModel[] = [
   new LinkingModel("1", "cases", "#cases"),
   new LinkingModel("2", "priser", "#blabla"),
 ];
 
-const InfoCard: CardModel[] = [
-  new CardModel(5, "test", "lorem ibsum", "her er ekstra"),
-];
+interface Props {
+  data: any;
+}
 
-export default function Home() {
+export const getStaticProps: GetStaticProps<Props> = async () => {
+  const data = await fetch("http://localhost:3000/api/hello")
+    .then((res) => res.json())
+    .catch((err) => console.error(err));
+
+  return {
+    props: {
+      data,
+    },
+  };
+};
+
+export default function Home({ data }: Props) {
   return (
     <>
       <Head>
@@ -30,11 +40,11 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Nav links={Links} />
-      <Hero title="jeg er ikke google premium partner, fordi jeg ikke arbejder for google jeg arbejder for jer" />
-      <CardPage cardData={data} />
+      <Hero title="" />
+
+      <MyComponent data={data} />
 
       <Footer />
     </>
   );
 }
-

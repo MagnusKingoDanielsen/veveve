@@ -1,22 +1,19 @@
 import React from "react";
 
 interface CardProps {
-  data: {
-    id: number;
-    title: string;
-    description: string;
-    ekstra: string;
-  };
+  title: string;
+  description: string;
+  extra?: string;
 }
 
-const Card: React.FC<CardProps> = ({ data }) => {
+const Card: React.FC<CardProps> = ({ title, description, extra }) => {
   return (
-    <div>
-      <h2>{data.title}</h2>
-      <p>{data.description}</p>
-      <p>{data.ekstra}</p>
+    <div className="card">
+      <h2>{title}</h2>
+      <p>{description}</p>
+      {extra && <p>{extra}</p>}
     </div>
   );
 };
 
-export default Card;
+export { Card };

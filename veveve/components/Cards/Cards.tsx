@@ -1,58 +1,53 @@
-import React from "react";
-import Card from "./Card";
 import { GetStaticProps } from "next";
 
-interface CardModel {
-  id: number;
+interface CardProps {
   title: string;
   description: string;
-  ekstra: string;
-}
-export type { CardModel };
-
-interface Props {
-  cardData: CardModel[];
+  extra?: string;
 }
 
-const CardPage: React.FC<Props> = ({ cardData }) => {
+const Card: React.FC<CardProps> = ({ title, description, extra }) => {
   return (
-    <div>
-      {cardData.map((card) => (
-        <Card key={card.id} data={card} />
-      ))}
+    <div className="card">
+      <h2>{title}</h2>
+      <p>{description}</p>
+      {extra && <p>{extra}</p>}
     </div>
   );
 };
 
 export const getStaticProps: GetStaticProps = async () => {
-  // Fetch data here, in this case we're using some Lorem Ipsum text
-  const cardData: CardModel[] = [
+  const cardData = [
     {
-      id: 1,
-      title: "Lorem Ipsum 1",
-      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-      ekstra: "...",
+      title: "Card 1",
+      description: "This is card 1",
     },
     {
-      id: 2,
-      title: "Lorem Ipsum 2",
-      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-      ekstra: "...",
+      title: "Card 2",
+      description: "This is card 2",
+      extra: "Some extra information",
     },
     {
-      id: 3,
-      title: "Lorem Ipsum 3",
-      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-      ekstra: "...",
-    },
-    {
-      id: 4,
-      title: "Lorem Ipsum 4",
-      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-      ekstra: "...",
+      title: "Card 3",
+      description: "This is card 3",
     },
   ];
-  return { props: { cardData } };
+
+  return {
+    props: {
+      cardData,
+    },
+  };
+};
+
+const CardPage: React.FC<{ cardData: CardProps[] }> = ({ cardData }) => {
+  return (
+    <div>
+      {cardData.map((card) => (
+        <Card key={card.title} {...card} />
+      ))}
+    </div>
+  );
 };
 
 export default CardPage;
