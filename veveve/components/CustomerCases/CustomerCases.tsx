@@ -32,7 +32,7 @@ const MyComponent: React.FC = () => {
               <p>→</p>
               <div className={styles.content}>
                 {Services.stats.map((stat) => (
-                  <h4>{stat}</h4>
+                  <h4 key={stat}>{stat}</h4>
                 ))}
               </div>
             </div>
