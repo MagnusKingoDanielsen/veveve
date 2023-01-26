@@ -1,4 +1,4 @@
-import helmet from "helmet";
+
 import Head from "next/head";
 import Footer from "../components/footer/Footer";
 
