@@ -12,5 +12,6 @@ module.exports = {
   serverRuntimeConfig: {
     // Will only be available on the server side
     headers: helmet.frameguard({ action: "sameorigin" }),
+    headers: helmet.crossOriginResourcePolicy({ policy: "same-origin" }),
   },
 };
