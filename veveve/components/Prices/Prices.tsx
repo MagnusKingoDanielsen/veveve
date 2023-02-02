@@ -3,6 +3,7 @@ import React from "react";
 import { PriceData } from "../model/PrisDataModel";
 import style from "../../styles/priceStyle.module.css";
 import CTA, { stil, tekst } from "../CTA/CTA";
+import LeadFormular from "../LeadFormular/LeadFormular";
 
 const Prices: React.FC = () => {
   const [domLoaded, setDomLoaded] = useState(false);
@@ -76,7 +77,7 @@ const Prices: React.FC = () => {
                         tekst={tekst.kontakt}
                         popup={
                           <div>
-                            <h3> Oih diz is da shizzle</h3>
+                            <LeadFormular />
                           </div>
                         }
                       />
