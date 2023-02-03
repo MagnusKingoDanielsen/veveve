@@ -6,7 +6,7 @@ import style from "../../styles/LeadFormular.module.css";
 const questions: React.FC = () => {
   const [question, setQuestions] = useState<LFQ[]>([]);
   const [activeQuestionNumber, setActiveQuestionNumber] = useState<number>(0);
-  const [leadFormularValue, setLeadFormularValue] = useState(0);
+  const [leadFormularValue, setLeadFormularValue] = useState<string>("0");
   const [hotLeadValue, setHotLeadValue] = useState(0);
 
   useEffect(() => {
@@ -29,8 +29,8 @@ const questions: React.FC = () => {
     }
   }
 
-  const onOptionChange = (e) => {
-    setLeadFormularValue(e.target.value);
+  const onOptionChange = (e: React.FormEvent<HTMLInputElement>) => {
+    setLeadFormularValue(e.currentTarget.value);
   };
 
   return (
