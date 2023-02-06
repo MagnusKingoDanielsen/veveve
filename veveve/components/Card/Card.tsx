@@ -31,11 +31,8 @@ const MyComponent: React.FC = () => {
               />
             ) : null}
             <p>
-              {service.description.split(" ").slice(0, 100).join(" ") + "..."}
+              {service.description.split(" ").slice(0, 30).join(" ") + "..."}
             </p>
-            <div className={style.popUp}>
-              <p>{service.extra}</p>
-            </div>
             <div className={style.cta}>
               <CTA
                 stil={stil.blue}
